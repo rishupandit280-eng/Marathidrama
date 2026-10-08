@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>मराठी अभिजात भाषा सप्ताह २०२६-२७ | नाट्यीकरण</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Yatra+One&family=Noto+Sans+Devanagari:wght@300;400;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 100vw; height: 100vh; overflow: hidden;
+    font-family: 'Noto Sans Devanagari', 'Tiro Devanagari Marathi', serif;
+    background: #0a0a12;
+  }
+
+  /* ── STAGE / SLIDE ── */
+  .slide {
+    position: relative; width: 100vw; height: 100vh;
+    background: radial-gradient(ellipse at 50% 60%, #1a0a2e 0%, #0d0618 50%, #050210 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  /* ── CURTAIN LEFT & RIGHT ── */
+  .curtain {
+    position: absolute; top: 0; width: 18%; height: 100%; z-index: 10;
+  }
+  .curtain-left {
+    left: 0;
+    background: linear-gradient(90deg, #6b0f1a 0%, #8b1a2b 30%, #a0243d 60%, rgba(107,15,26,0.3) 100%);
+    border-right: 4px solid #d4a843;
+    animation: curtainSwayLeft 6s ease-in-out infinite;
+    clip-path: polygon(0 0, 100% 0, 85% 15%, 100% 30%, 80% 50%, 100% 70%, 90% 85%, 100% 100%, 0 100%);
+  }
+  .curtain-right {
+    right: 0;
+    background: linear-gradient(270deg, #6b0f1a 0%, #8b1a2b 30%, #a0243d 60%, rgba(107,15,26,0.3) 100%);
+    border-left: 4px solid #d4a843;
+    animation: curtainSwayRight 6s ease-in-out infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 15% 85%, 0 70%, 20% 50%, 0 30%, 10% 15%);
+  }
+
+  /* curtain folds overlay */
+  .curtain::after {
+    content: '';
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      180deg,
+      rgba(0,0,0,0.15) 0px, transparent 8px, transparent 30px
+    );
+  }
+
+  @keyframes curtainSwayLeft {
+    0%, 100% { transform: skewY(0deg); }
+    50% { transform: skewY(0.5deg) translateX(-2px); }
+  }
+  @keyframes curtainSwayRight {
+    0%, 100% { transform: skewY(0deg); }
+    50% { transform: skewY(-0.5deg) translateX(2px); }
+  }
+
+  /* ── CURTAIN VALANCE (TOP) ── */
+  .valance {
+    position: absolute; top: 0; left: 0; width: 100%; height: 80px; z-index: 15;
+    background: linear-gradient(180deg, #7a1224 0%, #8b1a2b 60%, transparent 100%);
+    clip-path: polygon(
+      0 0, 100% 0, 100% 50%,
+      95% 70%, 90% 55%, 85% 75%, 80% 50%, 75% 72%, 70% 48%,
+      65% 70%, 60% 52%, 55% 75%, 50% 50%, 45% 72%, 40% 48%,
+      35% 70%, 30% 52%, 25% 75%, 20% 50%, 15% 72%, 10% 55%,
+      5% 70%, 0 50%
+    );
+    border-bottom: 3px solid #d4a843;
+  }
+  .valance::before {
+    content: '';
+    position: absolute; bottom: -18px; left: 0; width: 100%; height: 18px;
+    background: repeating-linear-gradient(90deg, #d4a843 0px, #f0d060 4px, transparent 4px, transparent 28px);
+  }
+
+  /* ── STAGE FLOOR ── */
+  .stage-floor {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 22%; z-index: 5;
+    background: linear-gradient(180deg, #2a1a0e 0%, #1a0f06 100%);
+    border-top: 3px solid #d4a843;
+  }
+  .stage-floor::before {
+    content: '';
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(90deg, rgba(212,168,67,0.05) 0px, transparent 2px, transparent 60px);
+  }
+
+  /* ── SPOTLIGHT EFFECTS ── */
+  .spotlight {
+    position: absolute; border-radius: 50%; z-index: 2;
+    filter: blur(60px); mix-blend-mode: screen; pointer-events: none;
+  }
+  .spotlight-1 {
+    width: 500px; height: 500px; top: -10%; left: 30%;
+    background: radial-gradient(circle, rgba(255,215,0,0.25) 0%, transparent 70%);
+    animation: spotPulse1 4s ease-in-out infinite;
+  }
+  .spotlight-2 {
+    width: 400px; height: 400px; top: 5%; right: 25%;
+    background: radial-gradient(circle, rgba(255,100,50,0.2) 0%, transparent 70%);
+    animation: spotPulse2 5s ease-in-out infinite;
+  }
+  .spotlight-3 {
+    width: 600px; height: 350px; bottom: 15%; left: 25%;
+    background: radial-gradient(ellipse, rgba(180,120,255,0.15) 0%, transparent 70%);
+    animation: spotPulse3 6s ease-in-out infinite;
+  }
+
+  @keyframes spotPulse1 {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+  @keyframes spotPulse2 {
+    0%, 100% { opacity: 0.6; transform: scale(1.1); }
+    50% { opacity: 1; transform: scale(0.95); }
+  }
+  @keyframes spotPulse3 {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.1); }
+  }
+
+  /* ── FLOATING DECORATIVE ELEMENTS ── */
+  .deco {
+    position: absolute; pointer-events: none; z-index: 3;
+    font-size: 2rem; opacity: 0;
+    animation: floatUp 12s linear infinite;
+  }
+  .deco:nth-child(1)  { left: 10%; animation-delay: 0s;   font-size: 1.5rem; }
+  .deco:nth-child(2)  { left: 22%; animation-delay: 2s;   font-size: 1.8rem; }
+  .deco:nth-child(3)  { left: 38%; animation-delay: 4s;   font-size: 1.2rem; }
+  .deco:nth-child(4)  { left: 55%; animation-delay: 1s;   font-size: 2.2rem; }
+  .deco:nth-child(5)  { left: 70%; animation-delay: 3s;   font-size: 1.6rem; }
+  .deco:nth-child(6)  { left: 85%; animation-delay: 5s;   font-size: 1.4rem; }
+  .deco:nth-child(7)  { left: 15%; animation-delay: 6s;   font-size: 1.9rem; }
+  .deco:nth-child(8)  { left: 48%; animation-delay: 7s;   font-size: 1.3rem; }
+  .deco:nth-child(9)  { left: 62%; animation-delay: 8s;   font-size: 2rem;   }
+  .deco:nth-child(10) { left: 78%; animation-delay: 9.5s; font-size: 1.7rem; }
+  .deco:nth-child(11) { left: 32%; animation-delay: 10s;  font-size: 1.5rem; }
+  .deco:nth-child(12) { left: 90%; animation-delay: 11s;  font-size: 1.3rem; }
+
+  @keyframes floatUp {
+    0%   { bottom: -5%; opacity: 0; transform: translateX(0) rotate(0deg); }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.5; }
+    100% { bottom: 105%; opacity: 0; transform: translateX(40px) rotate(360deg); }
+  }
+
+  /* ── RANGOLI MANDALA (behind text) ── */
+  .mandala {
+    position: absolute; width: 550px; height: 550px; z-index: 1;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    opacity: 0.08; animation: rotateMandala 60s linear infinite;
+  }
+  .mandala svg { width: 100%; height: 100%; }
+
+  @keyframes rotateMandala {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* ── CONTENT CONTAINER ── */
+  .content {
+    position: relative; z-index: 8;
+    text-align: center; color: #fff;
+    padding: 0 20%;
+  }
+
+  /* ── MASKS (theater) ── */
+  .masks {
+    font-size: 3.5rem; margin-bottom: 8px;
+    animation: maskBounce 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255,215,0,0.5));
+  }
+  @keyframes maskBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  /* ── TITLE ── */
+  .title {
+    font-family: 'Yatra One', 'Noto Sans Devanagari', serif;
+    font-size: 3rem; font-weight: 700;
+    background: linear-gradient(135deg, #ffd700, #ff8c00, #ffd700, #fff4b0, #ffd700);
+    background-size: 300% 300%;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmerGold 4s ease-in-out infinite;
+    text-shadow: none;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  @keyframes shimmerGold {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* ── DATE RANGE ── */
+  .date-range {
+    font-size: 1.25rem; color: #e8c96d;
+    letter-spacing: 2px; margin-bottom: 18px;
+    animation: fadeSlideUp 1.2s 0.5s both;
+    font-weight: 400;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 320px; height: 3px; margin: 0 auto 18px;
+    background: linear-gradient(90deg, transparent, #d4a843, #ffd700, #d4a843, transparent);
+    border-radius: 2px;
+    animation: dividerGlow 3s ease-in-out infinite;
+  }
+  @keyframes dividerGlow {
+    0%, 100% { box-shadow: 0 0 8px rgba(255,215,0,0.3); }
+    50% { box-shadow: 0 0 20px rgba(255,215,0,0.7); }
+  }
+
+  /* ── CLASS BADGE ── */
+  .class-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.1));
+    border: 2px solid #d4a843;
+    border-radius: 30px; padding: 6px 32px;
+    font-size: 1.15rem; color: #ffd700;
+    margin-bottom: 20px;
+    animation: fadeSlideUp 1.2s 0.8s both;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* ── NATYIKARAN (drama title) ── */
+  .drama-type {
+    font-family: 'Yatra One', serif;
+    font-size: 3.8rem; color: #fff;
+    margin-bottom: 6px;
+    animation: fadeSlideUp 1.2s 1s both;
+    text-shadow:
+      0 0 30px rgba(255,100,50,0.6),
+      0 0 60px rgba(255,50,0,0.3),
+      0 4px 15px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  .drama-type::after {
+    content: '🎭';
+    position: absolute; font-size: 2rem; margin-left: 10px; top: 8px;
+    animation: maskSpin 4s ease-in-out infinite;
+  }
+  @keyframes maskSpin {
+    0%, 100% { transform: rotateY(0deg); }
+    50% { transform: rotateY(180deg); }
+  }
+
+  /* ── SUBJECT ── */
+  .subject {
+    font-size: 2rem; margin-bottom: 12px;
+    animation: fadeSlideUp 1.2s 1.3s both;
+    position: relative;
+    display: inline-block;
+  }
+  .subject-label {
+    color: #c0a0e0; font-weight: 400;
+  }
+  .subject-value {
+    font-family: 'Yatra One', serif;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #ff6b6b);
+    background-size: 400% 100%;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbowShift 5s linear infinite;
+  }
+  @keyframes rainbowShift {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+  }
+
+  /* color splashes behind "साहित्याचे रंग" */
+  .color-splash {
+    position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+    pointer-events: none; z-index: -1;
+  }
+  .color-splash span {
+    position: absolute; border-radius: 50%; filter: blur(12px); opacity: 0.4;
+    animation: splashPulse 3s ease-in-out infinite;
+  }
+  .color-splash span:nth-child(1) { width: 30px; height: 30px; background: #ff6b6b; top: -10px; left: -20px; animation-delay: 0s; }
+  .color-splash span:nth-child(2) { width: 25px; height: 25px; background: #feca57; top: -15px; right: -15px; animation-delay: 0.5s; }
+  .color-splash span:nth-child(3) { width: 20px; height: 20px; background: #48dbfb; bottom: -10px; left: 30%; animation-delay: 1s; }
+  .color-splash span:nth-child(4) { width: 22px; height: 22px; background: #ff9ff3; bottom: -8px; right: 20%; animation-delay: 1.5s; }
+  .color-splash span:nth-child(5) { width: 18px; height: 18px; background: #55efc4; top: 50%; left: -25px; animation-delay: 2s; }
+
+  @keyframes splashPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.6); opacity: 0.6; }
+  }
+
+  /* ── EVENT DATE ── */
+  .event-date {
+    font-size: 1.3rem; color: #e8c96d;
+    margin-top: 8px;
+    animation: fadeSlideUp 1.2s 1.6s both;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* ── BOTTOM ORNAMENT ── */
+  .ornament-bottom {
+    margin-top: 14px;
+    font-size: 1.5rem;
+    animation: fadeSlideUp 1.2s 1.8s both;
+    opacity: 0.6;
+    letter-spacing: 8px;
+    color: #d4a843;
+  }
+
+  /* ── STAGE LIGHTS (footlights) ── */
+  .footlights {
+    position: absolute; bottom: 21.5%; left: 0; width: 100%; z-index: 6;
+    display: flex; justify-content: center; gap: 60px;
+  }
+  .footlight {
+    width: 14px; height: 14px; border-radius: 50%;
+    animation: footGlow 2s ease-in-out infinite;
+  }
+  .footlight:nth-child(1)  { background: #ff4444; animation-delay: 0s; }
+  .footlight:nth-child(2)  { background: #ffaa00; animation-delay: 0.2s; }
+  .footlight:nth-child(3)  { background: #44ff44; animation-delay: 0.4s; }
+  .footlight:nth-child(4)  { background: #4488ff; animation-delay: 0.6s; }
+  .footlight:nth-child(5)  { background: #ff44ff; animation-delay: 0.8s; }
+  .footlight:nth-child(6)  { background: #ff4444; animation-delay: 1.0s; }
+  .footlight:nth-child(7)  { background: #ffaa00; animation-delay: 1.2s; }
+  .footlight:nth-child(8)  { background: #44ff44; animation-delay: 1.4s; }
+  .footlight:nth-child(9)  { background: #4488ff; animation-delay: 1.6s; }
+  .footlight:nth-child(10) { background: #ff44ff; animation-delay: 1.8s; }
+
+  @keyframes footGlow {
+    0%, 100% { box-shadow: 0 0 8px currentColor, 0 -20px 40px currentColor; opacity: 0.6; }
+    50% { box-shadow: 0 0 16px currentColor, 0 -35px 60px currentColor; opacity: 1; }
+  }
+
+  /* ── SPARKLE PARTICLES ── */
+  .sparkle {
+    position: absolute; width: 4px; height: 4px;
+    background: #ffd700; border-radius: 50%;
+    pointer-events: none; z-index: 4;
+    animation: sparkleAnim 3s linear infinite;
+  }
+  @keyframes sparkleAnim {
+    0%   { opacity: 0; transform: scale(0) translateY(0); }
+    20%  { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0) translateY(-80px); }
+  }
+
+  /* generate sparkles via nth-child */
+  .sparkle:nth-child(1)  { top: 30%; left: 25%; animation-delay: 0s; }
+  .sparkle:nth-child(2)  { top: 50%; left: 72%; animation-delay: 0.5s; }
+  .sparkle:nth-child(3)  { top: 65%; left: 40%; animation-delay: 1s; }
+  .sparkle:nth-child(4)  { top: 25%; left: 60%; animation-delay: 1.5s; }
+  .sparkle:nth-child(5)  { top: 70%; left: 80%; animation-delay: 2s; }
+  .sparkle:nth-child(6)  { top: 40%; left: 30%; animation-delay: 2.5s; }
+  .sparkle:nth-child(7)  { top: 55%; left: 55%; animation-delay: 0.8s; }
+  .sparkle:nth-child(8)  { top: 35%; left: 85%; animation-delay: 1.8s; }
+
+  /* ── GENERIC FADE-SLIDE-UP ── */
+  @keyframes fadeSlideUp {
+    0%   { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── STARS TWINKLING ── */
+  .stars {
+    position: absolute; top: 0; left: 0; width: 100%; height: 60%; z-index: 1;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute; width: 2px; height: 2px;
+    background: #fff; border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+  .star:nth-child(1)  { top: 8%;  left: 20%; animation-delay: 0s; }
+  .star:nth-child(2)  { top: 15%; left: 45%; animation-delay: 0.5s; width: 3px; height: 3px; }
+  .star:nth-child(3)  { top: 5%;  left: 70%; animation-delay: 1s; }
+  .star:nth-child(4)  { top: 20%; left: 85%; animation-delay: 1.5s; }
+  .star:nth-child(5)  { top: 12%; left: 35%; animation-delay: 2s; width: 3px; height: 3px; }
+  .star:nth-child(6)  { top: 25%; left: 55%; animation-delay: 0.3s; }
+  .star:nth-child(7)  { top: 18%; left: 28%; animation-delay: 1.2s; }
+  .star:nth-child(8)  { top: 10%; left: 78%; animation-delay: 0.8s; width: 3px; height: 3px; }
+  .star:nth-child(9)  { top: 22%; left: 42%; animation-delay: 2.2s; }
+  .star:nth-child(10) { top: 7%;  left: 60%; animation-delay: 1.7s; }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+  }
+
+  /* ── PAINT DRIP / COLOR STREAKS ── */
+  .paint-streaks {
+    position: absolute; bottom: 22%; left: 0; width: 100%; height: 60px;
+    z-index: 4; pointer-events: none; overflow: hidden;
+  }
+  .streak {
+    position: absolute; bottom: 0; width: 6px; border-radius: 0 0 4px 4px;
+    animation: drip 4s ease-in infinite;
+    opacity: 0;
+  }
+  .streak:nth-child(1)  { left: 25%; height: 35px; background: #ff6b6b; animation-delay: 0s; }
+  .streak:nth-child(2)  { left: 32%; height: 28px; background: #feca57; animation-delay: 1s; }
+  .streak:nth-child(3)  { left: 45%; height: 40px; background: #48dbfb; animation-delay: 2s; }
+  .streak:nth-child(4)  { left: 58%; height: 32px; background: #ff9ff3; animation-delay: 0.5s; }
+  .streak:nth-child(5)  { left: 68%; height: 38px; background: #55efc4; animation-delay: 1.5s; }
+  .streak:nth-child(6)  { left: 75%; height: 25px; background: #fd79a8; animation-delay: 2.5s; }
+
+  @keyframes drip {
+    0%   { opacity: 0; transform: scaleY(0); transform-origin: top; }
+    30%  { opacity: 0.7; transform: scaleY(1); }
+    70%  { opacity: 0.7; transform: scaleY(1); }
+    100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ── CORNER ORNAMENTS ── */
+  .corner-ornament {
+    position: absolute; z-index: 9; font-size: 2.5rem; opacity: 0.25;
+    color: #d4a843;
+  }
+  .corner-tl { top: 85px; left: 19%; animation: cornerPulse 4s ease-in-out infinite; }
+  .corner-tr { top: 85px; right: 19%; animation: cornerPulse 4s ease-in-out infinite 1s; }
+  .corner-bl { bottom: 23%; left: 19%; animation: cornerPulse 4s ease-in-out infinite 2s; }
+  .corner-br { bottom: 23%; right: 19%; animation: cornerPulse 4s ease-in-out infinite 3s; }
+
+  @keyframes cornerPulse {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+  }
+</style>
+</head>
+<body>
+
+<div class="slide">
+
+  <!-- Stars -->
+  <div class="stars">
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div>
+  </div>
+
+  <!-- Spotlights -->
+  <div class="spotlight spotlight-1"></div>
+  <div class="spotlight spotlight-2"></div>
+  <div class="spotlight spotlight-3"></div>
+
+  <!-- Mandala -->
+  <div class="mandala">
+    <svg viewBox="0 0 200 200">
+      <g fill="none" stroke="#d4a843" stroke-width="0.5">
+        <circle cx="100" cy="100" r="95"/>
+        <circle cx="100" cy="100" r="80"/>
+        <circle cx="100" cy="100" r="65"/>
+        <circle cx="100" cy="100" r="50"/>
+        <circle cx="100" cy="100" r="35"/>
+        <circle cx="100" cy="100" r="20"/>
+        <!-- petals -->
+        <g id="petals">
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(0 100 100)"/>
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(30 100 100)"/>
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(60 100 100)"/>
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(90 100 100)"/>
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(120 100 100)"/>
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(150 100 100)"/>
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(180 100 100)"/>
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(210 100 100)"/>
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(240 100 100)"/>
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(270 100 100)"/>
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(300 100 100)"/>
+          <ellipse cx="100" cy="30" rx="12" ry="30" transform="rotate(330 100 100)"/>
+        </g>
+        <!-- inner petals -->
+        <g>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(15 100 100)"/>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(45 100 100)"/>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(75 100 100)"/>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(105 100 100)"/>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(135 100 100)"/>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(165 100 100)"/>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(195 100 100)"/>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(225 100 100)"/>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(255 100 100)"/>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(285 100 100)"/>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(315 100 100)"/>
+          <ellipse cx="100" cy="55" rx="8" ry="20" transform="rotate(345 100 100)"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Sparkles -->
+  <div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div>
+  <div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div>
+  <div class="sparkle"></div><div class="sparkle"></div>
+
+  <!-- Floating decorations -->
+  <div class="deco">🎭</div>
+  <div class="deco">✨</div>
+  <div class="deco">🎨</div>
+  <div class="deco">📖</div>
+  <div class="deco">🏵️</div>
+  <div class="deco">🪷</div>
+  <div class="deco">🎶</div>
+  <div class="deco">🌸</div>
+  <div class="deco">🎪</div>
+  <div class="deco">📜</div>
+  <div class="deco">🌺</div>
+  <div class="deco">✨</div>
+
+  <!-- Curtains -->
+  <div class="curtain curtain-left"></div>
+  <div class="curtain curtain-right"></div>
+  <div class="valance"></div>
+
+  <!-- Corner Ornaments -->
+  <div class="corner-ornament corner-tl">❦</div>
+  <div class="corner-ornament corner-tr">❦</div>
+  <div class="corner-ornament corner-bl">❦</div>
+  <div class="corner-ornament corner-br">❦</div>
+
+  <!-- ═══════ MAIN CONTENT ═══════ -->
+  <div class="content">
+
+    <div class="masks">🎭</div>
+
+    <div class="title">मराठी अभिजात भाषा सप्ताह<br>२०२६-२७</div>
+
+    <div class="date-range">दि ३ ऑक्टोबर ते ९ ऑक्टोबर</div>
+
+    <div class="divider"></div>
+
+    <div class="class-badge">इ. १० वी</div>
+
+    <div class="drama-type">नाट्यीकरण</div>
+
+    <div class="subject">
+      <span class="subject-label">विषय — </span>
+      <span class="subject-value">साहित्याचे रंग</span>
+      <div class="color-splash">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="event-date">📅 दि — ८ ऑक्टोबर २०२६</div>
+
+    <div class="ornament-bottom">⊰ ❖ ⊱</div>
+
+  </div>
+
+  <!-- Paint Streaks -->
+  <div class="paint-streaks">
+    <div class="streak"></div><div class="streak"></div><div class="streak"></div>
+    <div class="streak"></div><div class="streak"></div><div class="streak"></div>
+  </div>
+
+  <!-- Footlights -->
+  <div class="footlights">
+    <div class="footlight"></div><div class="footlight"></div><div class="footlight"></div>
+    <div class="footlight"></div><div class="footlight"></div><div class="footlight"></div>
+    <div class="footlight"></div><div class="footlight"></div><div class="footlight"></div>
+    <div class="footlight"></div>
+  </div>
+
+  <!-- Stage Floor -->
+  <div class="stage-floor"></div>
+
+</div>
+
+</body>
+</html>
